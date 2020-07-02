@@ -10,11 +10,9 @@ import org.springframework.context.annotation.Configuration;
  * @create 2020-02-21 11:42
  */
 @Configuration
-public class GateWayConfig
-{
+public class GateWayConfig {
     @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder)
-    {
+    public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder) {
         RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();
 
         routes.route("path_route_atguigu",
@@ -22,5 +20,14 @@ public class GateWayConfig
                         .uri("http://news.baidu.com/guonei")).build();
 
         return routes.build();
+    }
+
+    //手动配置自定义路由。正常使用yml配置就可以
+    @Bean
+    public RouteLocator customRouteLocator1(RouteLocatorBuilder routeLocatorBuilder) {
+        RouteLocatorBuilder.Builder builder = routeLocatorBuilder.routes();
+        builder.route("path_guoji",
+                r -> r.path("/guoji").uri("http://www.baidu.com")).build();
+        return builder.build();
     }
 }

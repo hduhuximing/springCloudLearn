@@ -19,7 +19,7 @@
 mvnw
 mvnw.cmd
 */*/target/
-
+*/target
 #log
 *.log
 *.log.*
